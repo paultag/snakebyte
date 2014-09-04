@@ -1,0 +1,11 @@
+
+DEF_NAME          print
+DEF_CONST         omgfst   "omgfast"
+
+
+DEF_LABEL         hi
+LOAD_GLOBAL       print
+LOAD_CONST        omgfst
+CALL_FUNCTION     1
+POP_TOP
+JUMP_ABSOLUTE     hi
