@@ -105,6 +105,7 @@ class Compiler:
     compile_LOAD_FAST = compile_var_arg
     compile_LOAD_ATTR = compile_name_arg
     compile_IMPORT_NAME = compile_name_arg
+    compile_IMPORT_FROM = compile_name_arg
     compile_STORE_FAST = compile_var_arg
 
     def compile_COMPARE_OP(self, instruction, args):
