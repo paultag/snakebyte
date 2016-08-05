@@ -129,7 +129,7 @@ class Compiler:
             return fn(instruction, args)
         return fn(instruction)
 
-    def build(self):
+    def build(self, filename):
         for location, where in self.jumps.items():
             self._set_jump(location, where)
 
@@ -139,7 +139,7 @@ class Compiler:
             tuple(self.co_consts),
             tuple(self.co_names),
             tuple(self.co_varnames),
-            "hi", "hi", 0, b"",
+            filename, filename, 0, b"",
         )
 
 
@@ -164,7 +164,7 @@ class Snakebyte:
         for (instruction, args) in self.parse():
             print(instruction, args)
             compiler.compile(instruction, args)
-        code = compiler.build()
+        code = compiler.build("hi")
         import dis
         dis.dis(code)
 
@@ -172,7 +172,7 @@ class Snakebyte:
         compiler = Compiler()
         for (instruction, args) in self.parse():
             compiler.compile(instruction, args)
-        return compiler.build()
+        return compiler.build(self.path)
 
 
 def main(fpath, *args):
